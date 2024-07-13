@@ -16,15 +16,14 @@ BeSign adalah library Node.js yang dirancang untuk memudahkan penambahan tanda t
 
 Untuk menginstal BeSign, gunakan npm dengan menjalankan perintah berikut di terminal:
 
-```sh
-npm install besign
+  $ npm install besign
 
-Penggunaan
+## Penggunaan
 Berikut adalah contoh cara menggunakan BeSign dalam proyek Node.js Anda:
 
-Contoh Penggunaan Dasar
-javascript
-Copy code
+
+```sh
+
 const BeSign = require('besign');
 
 // Membuat instance BeSign dengan konfigurasi yang dibutuhkan
