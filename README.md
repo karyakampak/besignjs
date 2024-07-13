@@ -1,5 +1,3 @@
-
-Copy code
 # BeSign
 
 BeSign adalah library Node.js yang dirancang untuk memudahkan penambahan tanda tangan digital pada dokumen PDF. Dengan BeSign, Anda dapat menandatangani dokumen PDF secara programatik, memberikan fleksibilitas tinggi untuk aplikasi Anda dalam mengelola dan mengotentikasi dokumen.
@@ -24,31 +22,27 @@ Berikut adalah contoh cara menggunakan BeSign dalam proyek Node.js Anda:
 
 
 ```sh
-
 const BeSign = require('besign');
 
-// Membuat instance BeSign dengan konfigurasi yang dibutuhkan
-const besign = new BeSign({
-  pdf_path: 'path/to/pdf',
-  image_path: 'path/to/image',
-  output_path: 'path/to/output',
-  p12Path: 'path/to/p12',
-  const tokenApi = 'your-token-api';
-  const cmsApi = 'your-cms-api';
-  nik: 'your-nik',
-  passphraseBSrE: 'your-passphrase-bsre',
-  passphraseCert: 'your-passphrase-cert',
-  page: 1,
-  visibility: true,
-  x: 100,
-  y: 100,
-  width: 200,
-  height: 100,
-  id: 'your-id',
-  secret: 'your-secret',
-  isLTV: true,
-  isSeal: false
-});
+const pdf_path = 'path/to/pdf;
+const image_path = 'path/to/image;
+const output_path = 'path/to/output';
+const p12Path = 'path/to/p12/certificate';
+const tokenApi = 'your-token-api';
+const cmsApi = 'yout-cms-api';
+const nik = 'your-nik';
+const passphraseBSrE = 'your-BSrE-passphrase';
+const passphraseCert = 'your-p12-passphrase';
+const page = 1;
+const visibility = 1;
+const x = 100;
+const y = 100;
+const width = 128;
+const height = 45.374;
+const id = 'your-id';
+const secret = 'your-secret';
+const isLTV = 0;
+const isSeal = 0;
 
 // Tandatangan dengan hit API diluar shared library
 const besignDetached = new BeSign({pdf_path: pdf_path, output_path: output_path, nik: nik, passphraseBSrE: passphraseBSrE, id: id, secret: secret, tokenApi: tokenApi, cmsApi: cmsApi});
