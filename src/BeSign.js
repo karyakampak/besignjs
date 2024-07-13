@@ -7,11 +7,13 @@ const os = require('os');
 
 class BeSign {
     // Constructor
-    constructor({pdf_path, image_path = "", output_path, p12Path = "", nik = "", passphraseBSrE = "", passphraseCert = "", page = 1, visibility = 0, x = 0.0, y = 0.0, width = 0.0, height = 0.0, id = "", secret = "", isLTV = 0, isSeal = 0} = {}) {
+    constructor({pdf_path, image_path = "", output_path, p12Path = "", tokenApi = "", cmsApi = "", nik = "", passphraseBSrE = "", passphraseCert = "", page = 1, visibility = 0, x = 0.0, y = 0.0, width = 0.0, height = 0.0, id = "", secret = "", isLTV = 0, isSeal = 0} = {}) {
         this.pdf_path = pdf_path;
         this.image_path = image_path;
         this.output_path = output_path;
         this.p12Path = p12Path;
+        this.tokenApi = tokenApi;
+        this.cmsApi = cmsApi;
         this.nik = nik;
         this.passphraseBSrE = passphraseBSrE;
         this.passphraseCert = passphraseCert;
@@ -29,7 +31,7 @@ class BeSign {
 
     // Method to get access token
     async getToken(id, secret) {
-        const url = "https://api-bsre.bssn.go.id/oauth2/token";
+        const url = this.tokenApi;
         const auth = id + ":" + secret;
         const bodyData = JSON.stringify({
             grant_type: "client_credentials"
@@ -61,7 +63,7 @@ class BeSign {
 
     // Method to get signature
     async getSignature(bsHash, token) {
-        const url = "https://api-bsre.bssn.go.id/v2/esign/v2/api/entity/sign/hash/pdf";
+        const url = this.cmsApi;
 
         const jsonData = {
             nik: this.nik,

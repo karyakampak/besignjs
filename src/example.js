@@ -4,8 +4,10 @@ const pdf_path = __dirname+'/input/example.pdf';
 const image_path = __dirname+'/input/visualku.png';
 const output_path = __dirname+'/output/output.pdf';
 const p12Path = __dirname+'/input/usertesting.p12';
-const nik = "6372032607970001";
-const passphraseBSrE = "333GokuBuild!";
+const tokenApi = "";
+const cmsApi = "";
+const nik = "";
+const passphraseBSrE = "";
 const passphraseCert = "123456";
 const page = 1;
 const visibility = 1;
@@ -13,15 +15,19 @@ const x = 100;
 const y = 100;
 const width = 128;
 const height = 45.374;
-const id = 'L3IqxuKvTRHKUvHim2YPXBEj7U0a';
-const secret = 'oAH8f9DGsWd4XJLZZiKGhlaRk2ca';
+const id = '';
+const secret = '';
 const isLTV = 0;
 const isSeal = 0;
 
-// Assuming BeSign class is defined in class.js
-const besign = new BeSign({pdf_path: pdf_path, output_path: output_path, nik: nik, passphraseBSrE: passphraseBSrE, id: id, secret: secret});
+// Tandatangan dengan hit API diluar shared library
+// const besignDetached = new BeSign({pdf_path: pdf_path, output_path: output_path, nik: nik, passphraseBSrE: passphraseBSrE, id: id, secret: secret, tokenApi: tokenApi, cmsApi: cmsApi});
+// besignDetached.detachedSign();
 
-// Assuming embededSign method is defined in BeSign class
-// besign.detachedSign();
-besign.sign();
-// besign.signWithCertificate();
+// Tandatangan dengan hit API dalam shared library
+// const besignSign = new BeSign({pdf_path: pdf_path, output_path: output_path, nik: nik, passphraseBSrE: passphraseBSrE, id: id, secret: secret});
+// besignSign.sign();
+
+// Tandatangan dengan sertifikat P12
+const besignWithCertificate = new BeSign({pdf_path: pdf_path, output_path: output_path, p12Path: p12Path, passphraseCert: passphraseCert});
+besignWithCertificate.signWithCertificate();
