@@ -33,6 +33,8 @@ const besign = new BeSign({
   image_path: 'path/to/image',
   output_path: 'path/to/output',
   p12Path: 'path/to/p12',
+  const tokenApi = 'your-token-api';
+  const cmsApi = 'your-cms-api';
   nik: 'your-nik',
   passphraseBSrE: 'your-passphrase-bsre',
   passphraseCert: 'your-passphrase-cert',
@@ -48,12 +50,15 @@ const besign = new BeSign({
   isSeal: false
 });
 
-// Menandatangani dokumen PDF
-besign.sign()
-  .then(() => {
-    console.log('Dokumen berhasil ditandatangani.');
-  })
-  .catch(error => {
-    console.error('Gagal menandatangani dokumen:', error);
-  });
+// Tandatangan dengan hit API diluar shared library
+const besignDetached = new BeSign({pdf_path: pdf_path, output_path: output_path, nik: nik, passphraseBSrE: passphraseBSrE, id: id, secret: secret, tokenApi: tokenApi, cmsApi: cmsApi});
+besignDetached.detachedSign();
+
+// Tandatangan dengan hit API dalam shared library
+const besignSign = new BeSign({pdf_path: pdf_path, output_path: output_path, nik: nik, passphraseBSrE: passphraseBSrE, id: id, secret: secret});
+besignSign.sign();
+
+// Tandatangan dengan sertifikat P12
+const besignWithCertificate = new BeSign({pdf_path: pdf_path, output_path: output_path, p12Path: p12Path, passphraseCert: passphraseCert});
+besignWithCertificate.signWithCertificate();
 ```
