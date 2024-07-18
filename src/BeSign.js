@@ -157,7 +157,14 @@ class BeSign {
         if (platform === 'linux') {
             libPath = path.join(__dirname, 'lib', 'libdksign.so');
         } else if (platform === 'darwin') {
-            libPath = path.join(__dirname, 'lib', 'libdksign.dylib');
+            if (arch === 'arm64') {
+                libPath = path.join(__dirname, 'lib', 'libdksign_sillicon.dylib');
+            } else if (arch === 'x64') {
+                libPath = path.join(__dirname, 'lib', 'libdksign.dylib');
+            } else {
+                console.error('Unsupported architecture on macOS');
+                process.exit(1);
+            }
         } else {
             console.error('Operating system not recognized');
             process.exit(1);
@@ -264,7 +271,14 @@ class BeSign {
         if (platform === 'linux') {
             libPath = path.join(__dirname, 'lib', 'libdksign.so');
         } else if (platform === 'darwin') {
-            libPath = path.join(__dirname, 'lib', 'libdksign.dylib');
+            if (arch === 'arm64') {
+                libPath = path.join(__dirname, 'lib', 'libdksign_sillicon.dylib');
+            } else if (arch === 'x64') {
+                libPath = path.join(__dirname, 'lib', 'libdksign.dylib');
+            } else {
+                console.error('Unsupported architecture on macOS');
+                process.exit(1);
+            }
         } else {
             console.error('Operating system not recognized');
             process.exit(1);
@@ -327,7 +341,14 @@ class BeSign {
         if (platform === 'linux') {
             libPath = path.join(__dirname, 'lib', 'libdksign.so');
         } else if (platform === 'darwin') {
-            libPath = path.join(__dirname, 'lib', 'libdksign.dylib');
+            if (arch === 'arm64') {
+                libPath = path.join(__dirname, 'lib', 'libdksign_sillicon.dylib');
+            } else if (arch === 'x64') {
+                libPath = path.join(__dirname, 'lib', 'libdksign.dylib');
+            } else {
+                console.error('Unsupported architecture on macOS');
+                process.exit(1);
+            }
         } else {
             console.error('Operating system not recognized');
             process.exit(1);

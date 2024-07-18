@@ -1,5 +1,5 @@
 {
-  "name": "besign",
+  "name": "besignjs",
   "version": "1.0.1",
   "main": "src/BeSign.js",
   "scripts": {
