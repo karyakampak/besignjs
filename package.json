@@ -1,6 +1,6 @@
 {
-  "name": "besignjs",
-  "version": "1.0.1",
+  "name": "besign",
+  "version": "1.0.0",
   "main": "src/BeSign.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
